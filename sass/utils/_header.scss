@@ -1,0 +1,112 @@
+@import './config';
+
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 52px!important;
+
+    div.logo{
+        font-size: 1.5rem;
+    }
+
+    div.unmake{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        div{
+            cursor: pointer;
+
+            i{
+                color: grey;
+            }             
+        }
+    }
+
+    div.utilities{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        i{
+            color: grey;
+        }             
+
+        div.theme{
+            cursor: pointer;
+        }
+
+        div.menu{
+            position: relative;
+
+            div.nav-toggle{
+                padding: 10px 15px;
+                text-align: center;
+                border-radius: 50%;
+                cursor: pointer;
+            }         
+            
+            div.list{
+                width: 400%;
+                position: absolute;
+                left: -300%;
+                padding: 10px;
+                background: white;
+                margin-top: 30%;
+                border-radius: 5px;
+                height: fit-content;
+
+                ul{
+                    list-style: none;
+                    
+                    a{
+                        text-decoration: none;
+                        padding: 0;
+                        display: block;
+                        margin: 10px auto;
+                        position: relative;
+                        font-size: 14px;
+
+                        &::after{
+                            content: ' ';
+                            height: 2px;
+                            width: 0;
+                            display: block;
+                            background-color: $primary-color;
+                            transition: $fade;
+                        }
+
+                        &:hover{
+                            width: 100%;
+
+                            &::after{
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    color: rgb(26, 24, 24);
+}
