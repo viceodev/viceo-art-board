@@ -2,8 +2,6 @@ let canvas  = document.querySelector('canvas#board');
 let ctx = canvas.getContext('2d');
 let drawing;
 let erasing = false;
-var cPushArray = new Array();
-var cStep = -1;
 
 const canvasProperties = {
     color: '#000000',
@@ -58,23 +56,38 @@ let keyUp = function(){
 }
 
 function paintOnCanvas (e){
-    ctx.save();
     if(drawing === true && erasing === false){
         setColor();
         ctx.globalCompositeOperation="source-over";
         ctx.lineWidth = canvasProperties.size;
         ctx.lineCap = canvasProperties.type;
         ctx.strokeStyle = canvasProperties.updatedColor;
-
-        ctx.lineTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);
-        ctx.stroke(); 
         
-        ctx.beginPath();
-        ctx.moveTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);       
+
+        if(e.type == 'touchmove'){
+            ctx.lineTo(getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).x, getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).y);
+            ctx.stroke(); 
+            
+            ctx.beginPath();
+            ctx.moveTo(getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).x, getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).y);  
+        }else{
+            ctx.lineTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);
+            ctx.stroke(); 
+            
+            ctx.beginPath();
+            ctx.moveTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);              
+        }
+     
     }
     else if(drawing === true && erasing === true){
         ctx.globalCompositeOperation="destination-out";
-        ctx.lineTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);
+
+        if(e.type == 'touchmove'){
+            ctx.lineTo(getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).x, getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).y);            
+        }else{
+            ctx.lineTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);
+        }
+
         ctx.stroke();
     }
 }
