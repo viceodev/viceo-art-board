@@ -1,0 +1,494 @@
+@import 'config';
+
+.bg-primary{
+    @include setTextBackground($primary-color);
+}
+
+.bg-secondary{
+    @include setTextBackground($secondary-color);
+}
+
+.bg-primary{
+    color: $secondary-color;
+}
+
+.bg-light{
+    @include setTextBackground($light-color);
+}
+
+.bg-white{
+    @include setTextBackground(white);
+}
+
+.bg-dark{
+    @include setTextBackground($dark-color);
+}
+
+.bg-danger{
+    @include setTextBackground($red);
+}
+
+.bg-success{
+    @include setTextBackground($green);
+}
+
+.text-primary{
+    color: $primary-color;
+}
+
+
+.text-tertiary{
+    color: $tertiary-color;
+}
+
+
+hr{
+    color: $secondary-color;
+}
+
+p{
+    font-size: 16px;
+}
+
+a{
+    text-decoration: none;
+    outline: none;
+    color: $primary-color!important;
+}
+
+li,input, textarea{
+    outline: none;
+}
+
+input, textarea, select{
+    transition: $fade;
+    
+    &:hover{
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5)!important ;
+    }
+}
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.container-full{
+    width: 100%;
+}
+
+img{
+    width: 100%;
+}
+
+ul{
+    list-style: none!important;
+}
+
+//margin and padding functionality 
+$listNum: (0,1,2,3,4,5);
+@each $num in $listNum{
+    .p-#{$num}{
+        padding: #{$num}rem;
+    }
+
+    .pl-#{$num}{
+        padding-left: #{$num}rem;
+    }
+
+    .pr-#{$num}{
+        padding-right: #{$num}rem;
+    }
+
+    .pt-#{$num}{
+        padding-top: #{$num}rem;
+    }
+
+    .pb-#{$num}{
+        padding-bottom: #{$num}rem;
+    }
+
+    .m-#{$num}{
+        margin: #{$num}rem;
+    }
+
+    .ml-#{$num}{
+        margin-left: #{$num}rem;
+    }
+
+    .mr-#{$num}{
+        margin-right: #{$num}rem;
+    }
+
+    .mt-#{$num}{
+        margin-top: #{$num}rem;
+    }
+
+    .mb-#{$num}{
+        margin-bottom: #{$num}rem!important;
+    }
+
+    .px-#{$num}{
+        padding: #{$num}rem 0;
+    }
+
+    .py-#{$num}{
+        padding: 0 #{$num}rem ;
+    }
+
+    .mx-#{$num}{
+        margin: #{$num}rem 0;
+    }
+    .my-#{$num}{
+        padding:0 #{$num}rem ;
+    }
+}
+
+
+
+.m-auto{
+    margin: auto!important;
+}
+
+.dont-break{
+    overflow-wrap:break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+
+}
+
+.p-auto{
+    padding: auto;
+}
+
+.m-body{
+    margin-top: 50px;
+}
+
+
+//display flex functionality
+%flex{
+    display: flex;
+}
+.flex{
+    @extend %flex;
+}
+
+.flex-around{
+    @extend %flex;
+    justify-content: space-around;
+}
+
+.flex-between{
+    @extend %flex;
+    justify-content: space-between;
+}
+
+.flex-evenly{
+    @extend %flex;
+    justify-content: space-evenly;
+}
+
+.flex-center{
+    @extend %flex;
+    justify-content: center;
+}
+
+
+
+.align-items-center{
+    align-items: center;
+}
+
+.align-items-end{
+    align-items: flex-end;
+}
+
+.align-items-start{
+    align-items: flex-start;
+}
+
+.shadow{
+    box-shadow: 1px 2px 20px $opaque;
+}
+
+.shadow-lg{
+    box-shadow: 3px 3px 20px $dark-color;
+}
+
+.shadow-sm{
+    box-shadow: .4px 1px 3px $dark-color;
+}
+
+.shadow-ts{
+    box-shadow: 0px 0px 10px $opaque;
+}
+
+.rounded{
+    border-radius: 10px;
+}
+
+.d-none{
+    display: none!important;
+}
+
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.center{
+    text-align: center;
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+
+
+
+.fade{
+    transition: .5s all;
+}
+
+.card{
+    @include setTextBackground(rgba(255,255,255,.4));
+    box-shadow: 0px 5px 10px 5px $secondary-color;
+    padding: 10px;
+    border-radius: 10px;
+    transition: $fade;
+    margin: 15px auto;
+
+    &:hover{
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 10px $opaque;
+    }
+}
+
+.sm{
+    font-size:16px;
+}
+
+.md{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.lg{
+    font-size: 64px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.p-button{
+    text-align: right;
+}
+
+.special-link{
+    display: block;
+    text-align: center;
+    padding: 10px;
+    
+    i{
+        transition: $fade;
+    }
+
+    &:hover{
+        i{
+            margin-left: 10px;
+        }
+    }
+}
+
+.hr{
+    height: 1px;
+    background-color: $dark-color;
+    width: 100%;
+    opacity: .4;
+    margin: 5px auto;
+}
+
+.opacity{
+    opacity: 0!important;
+    pointer-events: none;
+}
+
+.btn-primary{
+    padding: 10px;
+    border-radius: 5px;
+    transition: $fade;
+    box-shadow: -4px 10px 2px $opaque;
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+    align-items: center;
+    @include setTextBackground($tertiary-color);
+    margin: 20px 0px;
+    border: none;
+    align-self: center;
+
+    svg{
+        width: 20px;
+        fill: $light-color;
+    }
+
+    span{
+        display: inline-block;
+        margin-left: 4px;
+    }
+
+    &:hover{
+        @include setTextBackground($secondary-color);
+        box-shadow: 4px 10px 2px $opaque;
+
+
+        svg{
+            fill: $light-color;
+        }
+    }
+}
+
+
+.btn-light{
+    padding: 10px;
+    border-radius: 20px;
+    transition: $fade;
+    box-shadow: -4px 10px 2px $opaque;
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+    align-items: center;
+    @include setTextBackground($light-color);
+    margin: 20px 0px;
+    align-self: center;
+
+    svg{
+        width: 20px;
+        fill: $dark-color;
+    }
+
+    span{
+        display: inline-block;
+        margin-left: 4px;
+    }
+
+    &:hover{
+        @include setTextBackground($secondary-color);
+        box-shadow: 4px 10px 2px $opaque;
+
+
+        svg{
+            fill: $primary-color;
+        }
+    }
+}
+
+.animate-left{
+    animation: 1s leftAnim forwards;
+    position: relative;
+
+    @keyframes leftAnim{
+        from{
+            opacity: 0;
+            left: -200px;
+        }to{
+            opacity: 1;
+            left: 0px;
+        }
+    }
+}
+
+.animate-right{
+    animation: 1s rightAnim forwards;
+    position: relative;
+
+    @keyframes rightAnim{
+        from{
+            opacity: 0;
+            right: -200px;
+        }to{
+            opacity: 1;
+            right: 0px;
+        }
+    }
+}
+
+.animate-top{
+    animation: 1s topAnim forwards;
+    position: relative;
+
+    @keyframes topAnim{
+        from{
+            opacity: 0;
+            top: -200px;
+        }to{
+            opacity: 1;
+            top: 0px;
+        }
+    }
+}
+
+.animate-bottom{
+    animation: 1s bottomAnim forwards;
+    position: relative;
+
+    @keyframes bottomAnim{
+        from{
+            opacity: 0;
+            bottom: -200px;
+        }to{
+            opacity: 1;
+            bottom: 0px;
+        }
+    }
+}
+
+
+div#star{
+    svg{
+        width: 15px;
+        cursor: pointer;
+    }
+}
+
+%badge{
+    padding: 5px 20px;
+    border-radius: 5px;
+    box-shadow: $shadow;
+    width: fit-content ;
+    font-weight: 600;    
+    margin: 10px 0px;
+}
+
+.badge{
+    @extend %badge;
+}
+
+.badge-primary{
+    @extend %badge;
+    background-color: rgba($tertiary-color, .2);
+    color: $primary-color;
+}
+
+.badge-danger{
+    @extend %badge;
+    background-color: rgba($red, .2);
+    color: $red;
+}
+
+.badge-warning{
+    @extend %badge;
+    background-color: rgba($orange, .2);
+    color: $orange;
+}

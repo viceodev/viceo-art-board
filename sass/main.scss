@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');
+@import './utils/config';
+
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+}
+
+
+div#app{
+    background-color: $light-color; 
+    height: 100vh; 
+    width: 100vw; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: 'Open Sans';
+    font-weight: 400;
+}
+
+div.dark{
+    filter: invert(1);
+}
+
+
+// Utility Classes
+.d-none{
+    display: none;
+}
+
+.fade{
+    transition: $fade;
+}
+
+@import './utils/header';
+@import './utils/sidebar';
+@import './utils/canvas';
+@import './utils/utilities';
