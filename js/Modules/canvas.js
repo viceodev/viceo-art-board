@@ -87,6 +87,14 @@ let addEventListenersToDomElements =  function(){
     canvas.addEventListener('mousemove',  (e) => {
         paintOnCanvas(e);
     });
+
+    canvas.addEventListener('touchstart', (e) => {
+        keydown(e);
+    });
+    canvas.addEventListener('touchend', keyUp);
+    canvas.addEventListener('touchmove',  (e) => {
+        paintOnCanvas(e);
+    });
 }
 
 let refreshCanvas =  function(){
@@ -128,6 +136,12 @@ let saveAsPngFunctionality = function(){
         saveAsImage.href = url;
         saveAsImage.download = 'viceo.png';
     })
+
+    saveAsImage.addEventListener('touchstart', () => {
+        const url = canvas.toDataURL();
+        saveAsImage.href = url;
+        saveAsImage.download = 'viceo.png';
+    })
 }
 
 let saveAsJpegFunctionality = function(){
@@ -135,6 +149,12 @@ let saveAsJpegFunctionality = function(){
     
 
     saveAsImage.addEventListener('mousedown', () => {
+        const url = canvas.toDataURL();
+        saveAsImage.href = url;
+        saveAsImage.download = 'viceo.jpeg';
+    })
+
+    saveAsImage.addEventListener('touchstart', () => {
         const url = canvas.toDataURL();
         saveAsImage.href = url;
         saveAsImage.download = 'viceo.jpeg';
