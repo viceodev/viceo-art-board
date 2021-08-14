@@ -2,8 +2,6 @@ let canvas  = document.querySelector('canvas#board');
 let ctx = canvas.getContext('2d');
 let drawing;
 let erasing = false;
-var cPushArray = new Array();
-var cStep = -1;
 
 const canvasProperties = {
     color: '#000000',
@@ -58,23 +56,38 @@ let keyUp = function(){
 }
 
 function paintOnCanvas (e){
-    ctx.save();
     if(drawing === true && erasing === false){
         setColor();
         ctx.globalCompositeOperation="source-over";
         ctx.lineWidth = canvasProperties.size;
         ctx.lineCap = canvasProperties.type;
         ctx.strokeStyle = canvasProperties.updatedColor;
-
-        ctx.lineTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);
-        ctx.stroke(); 
         
-        ctx.beginPath();
-        ctx.moveTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);       
+
+        if(e.type == 'touchmove'){
+            ctx.lineTo(getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).x, getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).y);
+            ctx.stroke(); 
+            
+            ctx.beginPath();
+            ctx.moveTo(getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).x, getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).y);  
+        }else{
+            ctx.lineTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);
+            ctx.stroke(); 
+            
+            ctx.beginPath();
+            ctx.moveTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);              
+        }
+     
     }
     else if(drawing === true && erasing === true){
         ctx.globalCompositeOperation="destination-out";
-        ctx.lineTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);
+
+        if(e.type == 'touchmove'){
+            ctx.lineTo(getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).x, getMousePoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY).y);            
+        }else{
+            ctx.lineTo(getMousePoint(e.clientX, e.clientY).x, getMousePoint(e.clientX, e.clientY).y);
+        }
+
         ctx.stroke();
     }
 }
@@ -85,6 +98,14 @@ let addEventListenersToDomElements =  function(){
     });
     canvas.addEventListener('mouseup', keyUp);
     canvas.addEventListener('mousemove',  (e) => {
+        paintOnCanvas(e);
+    });
+
+    canvas.addEventListener('touchstart', (e) => {
+        keydown(e);
+    });
+    canvas.addEventListener('touchend', keyUp);
+    canvas.addEventListener('touchmove',  (e) => {
         paintOnCanvas(e);
     });
 }
@@ -128,6 +149,12 @@ let saveAsPngFunctionality = function(){
         saveAsImage.href = url;
         saveAsImage.download = 'viceo.png';
     })
+
+    saveAsImage.addEventListener('touchstart', () => {
+        const url = canvas.toDataURL();
+        saveAsImage.href = url;
+        saveAsImage.download = 'viceo.png';
+    })
 }
 
 let saveAsJpegFunctionality = function(){
@@ -135,6 +162,12 @@ let saveAsJpegFunctionality = function(){
     
 
     saveAsImage.addEventListener('mousedown', () => {
+        const url = canvas.toDataURL();
+        saveAsImage.href = url;
+        saveAsImage.download = 'viceo.jpeg';
+    })
+
+    saveAsImage.addEventListener('touchstart', () => {
         const url = canvas.toDataURL();
         saveAsImage.href = url;
         saveAsImage.download = 'viceo.jpeg';
