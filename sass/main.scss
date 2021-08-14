@@ -7,6 +7,10 @@
     margin: 0%;
 }
 
+body{
+    overscroll-behavior: none!important;
+}
+
 
 div#app{
     background-color: $light-color; 
@@ -20,7 +24,7 @@ div#app{
     left: 0;
     font-family: 'Open Sans';
     font-weight: 400;
-    overscroll-behavior-y: none!important;
+    overscroll-behavior: none!important;
 }
 
 div.dark{

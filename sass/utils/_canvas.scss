@@ -4,6 +4,7 @@ canvas{
     background-color: white;
     position: relative;
     z-index: -1;
+    overscroll-behavior: none!important;
 }
 
 canvas.active{
