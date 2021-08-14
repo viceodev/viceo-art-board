@@ -2,9 +2,9 @@
 
 canvas{
     background-color: white;
-    margin-top: 52px;
     position: relative;
     z-index: -1;
+    overscroll-behavior: contain;
 }
 
 canvas.active{

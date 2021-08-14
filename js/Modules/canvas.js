@@ -27,7 +27,7 @@ let  setColor = function(){
 
 let setCanvasSize = function(){
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight - 52;
+    canvas.height = window.innerHeight;
 }
 
 
