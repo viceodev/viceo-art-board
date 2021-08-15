@@ -5,7 +5,7 @@ let erasing = false;
 
 const canvasProperties = {
     color: '#000000',
-    size: 20,
+    size: 5,
     opacity: 1,
     type: 'round'
 }
