@@ -43,23 +43,26 @@ aside{
                     cursor: pointer;
 
                     div.progress-container{
-                        height: 3px;
+                        height: 5px;
                         background-color: $secondary-color;
                         z-index: -1;
+                        cursor: pointer;
                     }
 
                     div.color{
-                        height: 3px;
+                        height: 5px;
                         background-color: $primary-color;
                         width: 1%;
                         top: 0;
+                        cursor: pointer;
                     }
                     
                     div.ball{
-                        padding: 5px;
+                        padding: 7px;
                         border-radius: 50%;
                         background-color: $primary-color;
-                        top: -135%;
+                        top: -90%;
+                        cursor: pointer;
                     }
 
                     div.color,div.ball{
@@ -105,4 +108,22 @@ aside{
         }                
     }
     
+}
+
+
+@media screen and (max-width: 400px){
+    aside{
+        div.sidebar{
+            div.controls{
+                padding: 20px;
+                background-color: white;
+                position: absolute;
+                top: 10%;
+                left: 110%;
+                width: calc(100vw - 100%);
+                height: 120px;
+                border-radius: 10px;
+            }
+        }
+    }
 }

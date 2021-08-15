@@ -27,8 +27,8 @@ function SelectorFunctionality (){
             }
 
             if(way.id == 'size-control-container'){
-                color.style.width = '20%';
-                ball.style.left = '20%';
+                color.style.width = '5%';
+                ball.style.left = '5%';
             }
         }
 
@@ -70,13 +70,33 @@ function SelectorFunctionality (){
             }
         }
 
+        let moduleMoveDueToBallForMobile =  function(e){
+
+            let offset = (e.changedTouches[0].pageX - way.getBoundingClientRect().x);
+
+            if(e.target == ball){
+                if(status != true ) return;
+                percentage = Math.floor((offset * 100) / way.getBoundingClientRect().width) ;
+                color.style.width = `${percentage}%`;
+                ball.style.left = `${offset}px`;
+
+                if(e.target.parentNode.classList.contains('opacity-control-container')){
+                    opacity = percentage;
+                    percentage = Canvas.canvasProperties['size'] * 2;
+                }else if(e.target.parentNode.classList.contains('size-control-container')){
+                    opacity = Canvas.canvasProperties['opacity'] * 100;
+                }
+                calculateSizeAndOpacity();
+            }
+        }
+
         document.addEventListener('mousedown', (e) => {moduleMoveDueToWay(e)});
 
         document.addEventListener('touchstart', (e) => {moduleMoveDueToWay(e)});
 
         document.addEventListener('mousemove', (e) => {moduleMoveDueToBall(e)})
 
-        document.addEventListener('touchmove', (e) => {moduleMoveDueToBall(e)})
+        document.addEventListener('touchmove', (e) => {moduleMoveDueToBallForMobile(e)})
 
         document.addEventListener('mouseup', () => {
             status = false;
