@@ -1,4 +1,4 @@
-# Viceo Art Board
+# Viceo Art Board 🗒
 
 👨‍💻🎉 Tada dadada... Daa....
 
@@ -6,7 +6,7 @@
 
 Hahaha, I am just playing around. 
 
-This is a personal Project that was inspired by a need. I wanted to have a personal utility tool where I could scribble my signature on and download with ease. This want or need - i am still confused what it is😂 - gave birth to this project.
+This is a personal Project that was inspired by a need. I wanted to have a personal utility tool where I could scribble my signature on and download it with ease. This want or need - i am still confused what it is😂 - gave birth to this project.
 
 I learnt a lot about the Canvas API which is the core tool this was built on.
 
